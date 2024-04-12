@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../../app/store';
+import { RootState } from '../index';
 import { User as FirebaseUser } from 'firebase/auth';
 
 // Define a type for the slice state
@@ -18,11 +18,11 @@ export const userSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    signInToAccount: (state) => {
-      state.value += 1
+    signInToAccount: (state, action: PayloadAction<FirebaseUser>) => {
+      state.user = action.payload;
     },
     signOutFromAccount: (state) => {
-      state.value -= 1
+      state.user = null;
     },
   },
 })
@@ -30,6 +30,6 @@ export const userSlice = createSlice({
 export const { signInToAccount, signOutFromAccount } = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value
+export const selectUser = (state: RootState) => state.user.user
 
-export default counterSlice.reducer
+export default userSlice.reducer

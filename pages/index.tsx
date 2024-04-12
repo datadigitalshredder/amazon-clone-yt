@@ -1,12 +1,22 @@
 import Head from "next/head";
 import {
-  Container,
-} from "@/styles/sharedstyles";
+  BackgroundImg,
+  HomeContainer,
+  ProductRows
+} from "@/styles/homestyles";
 
 export default function Home() {
   return (
-    <Container>
-      Home Page
-    </Container>
+    <HomeContainer>
+      <BackgroundImg
+        src="https://m.media-amazon.com/images/I/61xnEcip5RL._SX3000_.jpg"
+        alt="Amazon Background"
+      />
+      <ProductRows>
+        Home Page
+      </ProductRows>
+      
+    </HomeContainer>
+    
   );
 }
