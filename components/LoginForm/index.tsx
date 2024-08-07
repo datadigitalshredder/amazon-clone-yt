@@ -18,7 +18,7 @@ function LoginForm() {
         e.preventDefault();
         // console.log('logged in');
         signInWithEmailAndPassword(auth, email, password).then(userCredential => {
-            console.log(userCredential.user);
+            // console.log(userCredential.user);
             dispatch(signInToAccount(userCredential.user))
             router.push('/');
         })
@@ -33,7 +33,7 @@ function LoginForm() {
         e.preventDefault();
         // console.log('registered');
         createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
-            console.log(userCredential.user);
+            // console.log(userCredential.user);
             dispatch(signInToAccount(userCredential.user))
             router.push('/');
         })

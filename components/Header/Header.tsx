@@ -6,11 +6,13 @@ import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { selectUser, signOutFromAccount } from '@/lib/store/reducers/userReducer';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/router';
+import { selectCartItemsCount } from '@/lib/store/reducers/cartReducer';
 
 const Header = () => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const quantity = useAppSelector(selectCartItemsCount);
   const handleSignIn = () => {
     if (user !== null) {
       auth.signOut();
@@ -18,6 +20,7 @@ const Header = () => {
     } else {
       router.push("/login");
     }
+
   };
 
   return (
@@ -50,7 +53,7 @@ const Header = () => {
       <CheckoutLink href="/checkout">
         <Basket>
           <ShoppingCartOutlinedIcon />
-          <BasketCounter>0</BasketCounter>
+          <BasketCounter>{quantity}</BasketCounter>
         </Basket>
       </CheckoutLink>
     </Nav>

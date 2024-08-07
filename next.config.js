@@ -6,7 +6,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["pngimg.com"],
+    domains: ["pngimg.com", "media.graphassets.com"],
     remotePatterns: [
       {
         protocol: "https",
